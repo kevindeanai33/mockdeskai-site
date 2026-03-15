@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MockDeskAI - AI-Powered Design Proofing for Sales Teams</title>
+  <meta name="description" content="MockDeskAI lets sales teams edit PSD mockups using natural language. No design skills required. Built for the decorated apparel industry.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233B82F6'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='18'%3EM%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3B82F6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+    .gradient-border {
+      background: linear-gradient(135deg, #3B82F6 0%, #1d4ed8 100%);
+      padding: 1px;
+      border-radius: 0.75rem;
+    }
+    .gradient-border-inner {
+      background: #030712;
+      border-radius: calc(0.75rem - 1px);
+      height: 100%;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .step-line {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #3B82F6, transparent);
+      opacity: 0.3;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fade-up 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center">
+          <span class="text-white font-bold text-sm">M</span>
+        </div>
+        <span class="text-lg font-bold tracking-tight">MockDeskAI</span>
+      </div>
+      <a href="#early-access"
+         class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-brand-500 hover:bg-brand-600 text-white transition-colors">
+        Request Access
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-24 sm:pt-40 sm:pb-32 overflow-hidden">
+    <div class="hero-glow"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative">
+      <div class="animate-fade-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-700/60 bg-gray-900/60 text-xs font-medium text-gray-400 mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+          Private Beta
+        </div>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] animate-fade-up delay-100">
+        AI-Powered<br>
+        <span class="text-brand-500">Design Proofing</span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed animate-fade-up delay-200">
+        Sales teams in the decorated apparel industry can now edit PSD mockups themselves -- using plain English. No designer required.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-300">
+        <a href="#early-access"
+           class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold rounded-xl bg-brand-500 hover:bg-brand-600 text-white transition-colors shadow-lg shadow-brand-500/20">
+          Request Access
+        </a>
+        <a href="#how-it-works"
+           class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-xl border border-gray-700 hover:border-gray-600 text-gray-300 hover:text-white transition-colors">
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="py-24 sm:py-32 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+        <!-- Problem -->
+        <div>
+          <p class="text-sm font-semibold text-red-400 uppercase tracking-wider mb-4">The Problem</p>
+          <h2 class="text-2xl sm:text-3xl font-bold leading-tight mb-6">
+            Simple mockup changes shouldn't take hours
+          </h2>
+          <p class="text-gray-400 leading-relaxed">
+            A sales rep needs to swap a headline on a mockup. They email the designer, wait for a revision, request another round of changes, and wait again. A five-minute edit turns into a two-day bottleneck. Multiply that across a team and hundreds of accounts, and you're losing deals to turnaround time.
+          </p>
+        </div>
+        <!-- Solution -->
+        <div>
+          <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider mb-4">The Solution</p>
+          <h2 class="text-2xl sm:text-3xl font-bold leading-tight mb-6">
+            Edit mockups yourself, in seconds, with AI
+          </h2>
+          <p class="text-gray-400 leading-relaxed">
+            MockDeskAI puts design editing power directly in the hands of sales reps. Open a PSD, describe your change in plain language, and the AI handles the rest. No Photoshop skills needed. No waiting on designers. You stay in control of the client conversation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-24 sm:py-32 border-t border-gray-800/50 bg-gray-900/30">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider mb-4">How It Works</p>
+        <h2 class="text-3xl sm:text-4xl font-bold">Three steps. No learning curve.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-6">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="gradient-border">
+            <div class="gradient-border-inner p-8">
+              <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mb-6">
+                <span class="text-brand-400 font-bold text-lg">1</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3">Upload your PSD</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Drop in the Photoshop mockup file you received from your design team. MockDeskAI reads every layer, text element, and group.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="gradient-border">
+            <div class="gradient-border-inner p-8">
+              <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mb-6">
+                <span class="text-brand-400 font-bold text-lg">2</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3">Describe your edit</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Type what you want changed in plain English. "Change the headline to Summer Sale." "Hide the background layer." "Set the logo opacity to 50%."
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="relative">
+          <div class="gradient-border">
+            <div class="gradient-border-inner p-8">
+              <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mb-6">
+                <span class="text-brand-400 font-bold text-lg">3</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3">Export the result</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Review the updated design in the live preview, make more changes if needed, then export as PNG or JPG. Send it to your client in minutes, not days.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="py-24 sm:py-32 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider mb-4">Features</p>
+        <h2 class="text-3xl sm:text-4xl font-bold">Everything you need, nothing you don't</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Text Editing</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Change any text layer by describing what you want. Headlines, subtext, pricing, dates -- just say it.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Layer Control</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Show, hide, or adjust opacity on any layer or group. The AI understands your PSD structure.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Undo / Redo</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Made a mistake? Step backward and forward through your edit history with full undo support.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">PNG & JPG Export</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Export your finished design in the format you need. Ready to send to the client or drop into a presentation.</p>
+        </div>
+        <!-- Feature 5 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M12 9v6"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Works Offline</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">MockDeskAI is a desktop app. Your PSD files never leave your machine. No cloud uploads, no latency.</p>
+        </div>
+        <!-- Feature 6 -->
+        <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-800/60 hover:border-gray-700/60 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">Your Data Stays Local</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">Design files are processed on your computer. Client artwork and proprietary designs never touch a server.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Built for Sales Teams -->
+  <section class="py-24 sm:py-32 border-t border-gray-800/50 bg-gray-900/30">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider mb-4">Purpose-Built</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6">Built for the decorated apparel industry</h2>
+      <p class="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+        The decorated apparel market generates $30-40 billion annually, served by an estimated 150,000 to 260,000 sales reps. These reps work with mockups every day -- showing clients what their logo will look like on a shirt, a hat, a jacket. Every mockup revision that requires a designer creates friction, slows deals, and costs money.
+      </p>
+      <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+        MockDeskAI eliminates that bottleneck. Reps handle routine edits themselves and only loop in designers for net-new creative work. No tool on the market does this today.
+      </p>
+    </div>
+  </section>
+
+  <!-- Early Access CTA -->
+  <section id="early-access" class="py-24 sm:py-32 border-t border-gray-800/50">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="p-10 sm:p-14 rounded-2xl border border-gray-800/60 bg-gradient-to-b from-gray-900/80 to-gray-950">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 text-xs font-medium text-brand-400 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+          Private Beta
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Get early access</h2>
+        <p class="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
+          MockDeskAI is currently in private beta. If you manage a sales team in the decorated apparel space, request access for your team.
+        </p>
+        <a href="mailto:kevin.dean.ai33@gmail.com?subject=MockDeskAI%20Early%20Access%20Request&body=Hi%2C%0A%0AI%27m%20interested%20in%20getting%20early%20access%20to%20MockDeskAI%20for%20my%20team.%0A%0ACompany%3A%20%0ATeam%20size%3A%20%0ARole%3A%20%0A%0AThanks!"
+           class="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold rounded-xl bg-brand-500 hover:bg-brand-600 text-white transition-colors shadow-lg shadow-brand-500/20">
+          Request Access
+        </a>
+        <p class="mt-4 text-sm text-gray-500">or email kevin.dean.ai33@gmail.com directly</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded-md bg-brand-500 flex items-center justify-center">
+          <span class="text-white font-bold text-xs">M</span>
+        </div>
+        <span class="text-sm font-semibold text-gray-400">MockDeskAI</span>
+      </div>
+      <p class="text-sm text-gray-600">&copy; 2026 MockDeskAI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Minimal JS for scroll animations -->
+  <script>
+    // Intersection Observer for fade-in animations on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    // Observe sections for scroll animations
+    document.querySelectorAll('section').forEach(section => {
+      // Already visible sections (hero) handle their own animation
+    });
+
+    // Smooth scroll for nav links (fallback for browsers without scroll-smooth)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
